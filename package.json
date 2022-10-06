@@ -64,6 +64,8 @@
     "concurrently": "^7.1.0",
     "nodemon": "^2.0.15"
   },
-  "engines": { "node": "YOUR_VERSION_OF_NODE",
- "npm": "YOUR_VERSION_OF_NPM"}
+  "engines": {
+    "node": "v16.14.2",
+    "npm": "8.5.0"
+  }
 }
