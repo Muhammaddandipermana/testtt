@@ -37,7 +37,7 @@ const ShopLangka = (props) => {
                   <Message variant="alert-danger">{error}</Message>
                 ) : (
                   <>
-                    {props.products ? props.products.map((product) => (
+                    {products.map((product) => (
                       <div
                         className="shop col-lg-4 col-md-6 col-sm-6"
                         key={product._id}
@@ -67,7 +67,7 @@ const ShopLangka = (props) => {
                     </div>
                         </div>
                       </div>
-                    )): <p>Users is empty</p>}
+                    ))}
                   </>
                 )}
 

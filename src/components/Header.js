@@ -38,7 +38,7 @@ const Header = () => {
         <div className="container">
           <div className="row">
             <Navbar expand="lg">
-              <Navbar.Brand href="#home" class="btn-small"><strong><small>The Plant Marketplace Indonesia</small></strong></Navbar.Brand>
+              <Navbar.Brand href="#home" className="btn-small"><strong><small>The Plant Marketplace Indonesia</small></strong></Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -91,7 +91,7 @@ const Header = () => {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <i class="fas fa-user"></i>
+                        <i className="fas fa-user"></i>
                       </button>
                       <div className="dropdown-menu">
                         <Link className="dropdown-item" to="/profile">
@@ -116,7 +116,7 @@ const Header = () => {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <i class="fas fa-user"></i>
+                        <i className="fas fa-user"></i>
                       </button>
                       <div className="dropdown-menu">
                         <Link className="dropdown-item" to="/login">

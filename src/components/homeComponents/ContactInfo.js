@@ -25,7 +25,7 @@ const ContactInfo = () => {
         <div className="col-12 col-md-4 contact-Box">
           <div className="box-info">
             <div className="info-image">
-              <i class="fas fa-envelope"></i>
+              <i className="fas fa-envelope"></i>
             </div>
             <h5>Gmail</h5>
             <p>Muhammaddandipermana77@gmail.com</p>
