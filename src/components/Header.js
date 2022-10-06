@@ -354,12 +354,23 @@ const Header = () => {
               </form>
             </div>
             <br></br>
-  <Button variant="success">Pohon</Button>{' '}
-  <Button variant="success">Semak Tinggi</Button>{' '}
-  <Button variant="success">Semak Sedang</Button>{' '}
-  <Button variant="success">Semak Rendah</Button>{' '}
-  <Button variant="success">Ground Cover</Button>{' '}
-  <Button variant="success">Rumput</Button>{' '}
+            <Link to="/ShopSection">
+            <Button variant="success" >Tanaman Langka</Button>{' '}
+            </Link >
+            <Link to="/Pohon">
+            <Button variant="success" >Pohon</Button>{' '}
+            </Link >
+            <Link to="/SemakTinggi"> <Button variant="success" >Semak Tinggi</Button>{' '}</Link>
+            <Link to="/SemakSedang">
+            <Button variant="success">Semak Sedang</Button>{' '}
+            </Link>
+            <Link to="/SemakRendah">
+            <Button variant="success" >Semak Rendah</Button>{' '}
+            </Link >
+            <Link to="/GroundCover"> <Button variant="success" >Ground Cover</Button>{' '}</Link>
+            <Link to="/Rumput">
+            <Button variant="success">Rumput</Button>{' '}
+            </Link>
           </div>
 
           {/* PC HEADER */}
