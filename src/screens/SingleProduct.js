@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./../components/Header";
+import Rating from "../components/homeComponents/Rating";
 import { Link } from "react-router-dom";
 import Message from "./../components/LoadingError/Error";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ import { PRODUCT_CREATE_REVIEW_RESET } from "../Redux/Constants/ProductConstants
 import moment from "moment";
 
 const SingleProduct = ({ history, match }) => {
+  const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
@@ -39,7 +41,10 @@ const SingleProduct = ({ history, match }) => {
     dispatch(listProductDetails(productId));
   }, [dispatch, productId, successCreateReview]);
 
-
+  const AddToCartHandle = (e) => {
+    e.preventDefault();
+    history.push(`/cart/${productId}?qty=${qty}`);
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -73,25 +78,50 @@ const SingleProduct = ({ history, match }) => {
                   <p>{product.description}</p>
 
                   <div className="product-count col-lg-7 ">
-                    
+                    <div className="flex-box d-flex justify-content-between align-items-center">
+                      <h6>Harga</h6>
+                      <span>Rp. {product.price}</span>
+                    </div>
                     <div className="flex-box d-flex justify-content-between align-items-center">
                       <h6>Status</h6>
-                      {product.countInStock >= 0 ? (
-                        <span>Tanaman Langka</span>
+                      {product.countInStock > 0 ? (
+                        <span>In Stock</span>
                       ) : (
                         <span>unavailable</span>
                       )}
-                      
                     </div>
                     <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Dokumen BKSDA</h6>
-                      {product.countInStock >= 0 ? (
-                        <span>Sudah Terbit</span>
-                      ) : (
-                        <span>unavailable</span>
-                      )}
-                      
+                      <h6>Ulasan</h6>
+                      <Rating
+                        value={product.rating}
+                        text={`${product.numReviews} reviews`}
+                      />
                     </div>
+                    {product.countInStock > 0 ? (
+                      <>
+                        <div className="flex-box d-flex justify-content-between align-items-center">
+                          <h6>Jumlah</h6>
+                          <select
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </select>
+                        </div>
+                        <button
+                          onClick={AddToCartHandle}
+                          className="round-black-btn"
+                        >
+                          Masukan Keranjang
+                        </button>
+                      </>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -110,6 +140,7 @@ const SingleProduct = ({ history, match }) => {
                     className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded"
                   >
                     <strong>{review.name}</strong>
+                    <Rating value={review.rating} />
                     <span>{moment(review.createdAt).calendar()}</span>
                     <div className="alert alert-info mt-3">
                       {review.comment}
@@ -118,7 +149,7 @@ const SingleProduct = ({ history, match }) => {
                 ))}
               </div>
               <div className="col-md-6">
-                <h6>Tulis Ulasan Tentang Tanaman</h6>
+                <h6>Tulis Ulasan Pembeli</h6>
                 <div className="my-4">
                   {loadingCreateReview && <Loading />}
                   {errorCreateReview && (
@@ -129,7 +160,21 @@ const SingleProduct = ({ history, match }) => {
                 </div>
                 {userInfo ? (
                   <form onSubmit={submitHandler}>
-                    
+                    <div className="my-4">
+                      <strong>Rating</strong>
+                      <select
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                        className="col-12 bg-light p-3 mt-2 border-0 rounded"
+                      >
+                        <option value="">Select...</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                      </select>
+                    </div>
                     <div className="my-4">
                       <strong>Komentar</strong>
                       <textarea

@@ -1,16 +1,26 @@
-import React, { useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect,useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import Rating from "./Rating";
 import Pagination from "./pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/Actions/ProductActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 
-const ShopLangka = (props) => {
+const ShopSection = (props) => {
   const { keyword, pagenumber } = props;
   const dispatch = useDispatch();
+  const [keywordSearch, setKeyword] = useState();
+  let history = useHistory();
   
-
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (keywordSearch.trim()) {
+      history.push(`/search/${keywordSearch}`);
+    } else {
+      history.push("/");
+    }
+  };
 
 
   
@@ -27,6 +37,17 @@ const ShopLangka = (props) => {
         <div className="section">      
           <div className="row">          
             <div className="col-lg-12 col-md-12 article">
+            <form onSubmit={submitHandler} className="input-group">
+                  <input
+                    type="search"
+                    className="form-control rounded search"
+                    placeholder="Search"
+                    onChange={(e) => setKeyword(e.target.value)}
+                  />
+                  <button type="submit" className="search-button">
+                    search
+                  </button>
+                </form>
               <div className="shopcontainer row">
                 
                 {loading ? (
@@ -54,17 +75,14 @@ const ShopLangka = (props) => {
                               <Link to={`/products/${product._id}`}>
                                 {product.name}
                               </Link>
-                            </p>                           
+                            </p>
+
+                            <Rating
+                              value={product.rating}
+                              text={`${product.numReviews} reviews`}
+                            />
+                            <h3>Rp. {product.price}</h3>
                           </div>
-                          <div className="flex-box d-flex align-items-center">
-                      <h6>Status :</h6>
-                      {product.countInStock >= 0 ? (
-                        <span>Tanaman Langka</span>
-                      ) : (
-                        <span>unavailable</span>
-                      )}
-                      
-                    </div>
                         </div>
                       </div>
                     ))}
@@ -86,4 +104,4 @@ const ShopLangka = (props) => {
   );
 };
 
-export default ShopLangka;
+export default ShopSection;

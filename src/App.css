@@ -200,7 +200,7 @@ textarea:focus {
 .subscribe-section {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.226), rgba(0, 0, 0, 0.226)),
     url("https://res.cloudinary.com/rtxdandi/image/upload/v1649914042/Artboard_1_2x_qodu0p.png")
-      no-repeat scroll center / cover;
+      ;
   padding: 100px 0 100px;
 }
 .subscribe-head h2 {
