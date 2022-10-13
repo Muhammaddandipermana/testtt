@@ -38,7 +38,7 @@ const PaymentScreen = ({ history }) => {
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
-              <label className="form-check-label">WhatsApp (WA)</label>
+              <label className="form-check-label">WhatsApp (WA) DD</label>
             </div>
           </div>
 
