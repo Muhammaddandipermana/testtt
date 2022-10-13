@@ -4,7 +4,6 @@ import { savePaymentMethod } from "../Redux/Actions/cartActions";
 import Header from "./../components/Header";
 
 const PaymentScreen = ({ history }) => {
-  window.scrollTo(0, 0);
 
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
@@ -39,7 +38,7 @@ const PaymentScreen = ({ history }) => {
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
-              <label className="form-check-label">PayPal or Credit Card</label>
+              <label className="form-check-label">WhatsApp (WA)</label>
             </div>
           </div>
 

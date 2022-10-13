@@ -7,7 +7,6 @@ import Header from "./../components/Header";
 import Message from "./../components/LoadingError/Error";
 
 const PlaceOrderScreen = ({ history }) => {
-  window.scrollTo(0, 0);
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removefromcart } from "./../Redux/Actions/cartActions";
 
 const CartScreen = ({ match, location, history }) => {
-  window.scrollTo(0, 0);
+
   const dispatch = useDispatch();
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;

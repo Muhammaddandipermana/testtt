@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import { saveShippingAddress } from "../Redux/Actions/cartActions";
 
 const ShippingScreen = ({ history }) => {
-  window.scrollTo(0, 0);
 
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;

@@ -12,7 +12,6 @@ import { ORDER_PAY_RESET } from "../Redux/Constants/OrderConstants";
 import { URL } from "../Redux/url";
 
 const OrderScreen = ({ match }) => {
-  window.scrollTo(0, 0);
   const [sdkReady, setSdkReady] = useState(false);
   const orderId = match.params.id;
   const dispatch = useDispatch();
