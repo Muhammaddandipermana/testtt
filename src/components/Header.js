@@ -42,25 +42,25 @@ const Header = () => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="#home">Home</Nav.Link>
-                  <Nav.Link href="#link">Contact</Nav.Link>
+                  <Nav.Link href="https://theplant.vercel.app/">Home</Nav.Link>
+                  <Nav.Link href="https://wa.me/6289627706016">Contact</Nav.Link>
                   <NavDropdown title="Social Media" id="basic-nav-dropdown">
-                    <div className=" col-12 col-lg-6 justify-content-center justify-content-lg-end d-flex align-items-center">
-                      <Link to="">
+                    <div className="justify-content-center justify-content-lg-end d-flex align-items-center">
+                      <Nav.Link href="https://m.facebook.com/100006825333146/">
                         <i className="fab fa-facebook-f"></i>
-                      </Link>
-                      <Link to="">
+                      </Nav.Link>
+                      <Nav.Link href="https://www.instagram.com/muhammaddandipermana/followers/">
                         <i className="fab fa-instagram"></i>
-                      </Link>
-                      <Link to="">
+                      </Nav.Link>
+                      <Nav.Link to="">
                         <i className="fab fa-linkedin-in"></i>
-                      </Link>
-                      <Link to="">
+                      </Nav.Link>
+                      <Nav.Link to="">
                         <i className="fab fa-youtube"></i>
-                      </Link>
-                      <Link to="">
+                      </Nav.Link>
+                      <Nav.Link href="https://youtube.com/@rtxyami530">
                         <i className="fab fa-pinterest-p"></i>
-                      </Link>
+                      </Nav.Link>
                     </div>
                   </NavDropdown>
                 </Nav>
@@ -126,6 +126,9 @@ const Header = () => {
                         <Link className="dropdown-item" to="/register">
                           Register
                         </Link>
+                        <Nav.Link className="dropdown-item" href="https://www.admintheplant.cf/login">
+                          Admin
+                        </Nav.Link>
                       </div>
                     </div>
                   )}
@@ -339,8 +342,7 @@ const Header = () => {
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
-            <br />
-            <div className="col-12 d-flex align-items-center">
+            {/* <div className="col-12 d-flex align-items-center">
               <form onSubmit={submitHandler} className="input-group">
                 <input
                   type="search"
@@ -352,9 +354,12 @@ const Header = () => {
                   search
                 </button>
               </form>
-            </div>
+            </div> */}
             <br></br>
             <Link to="/ShopSection">
+            <Button variant="success" >Beli Tanaman</Button>{' '}
+            </Link >
+            <Link to="/TanamanLlangka">
             <Button variant="success" >Tanaman Langka</Button>{' '}
             </Link >
             <Link to="/Pohon">
@@ -381,7 +386,7 @@ const Header = () => {
                   <img alt="logo" src="/images/logotheplant.png" />
                 </Link>
               </div>
-              <div className="col-md-6 col-8 d-flex align-items-center">
+              {/* <div className="col-md-6 col-8 d-flex align-items-center">
                 <form onSubmit={submitHandler} className="input-group">
                   <input
                     type="search"
@@ -393,8 +398,8 @@ const Header = () => {
                     search
                   </button>
                 </form>
-              </div>
-              <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
+              </div> */}
+              <div className="col-9 d-flex align-items-center justify-content-end Login-Register">
                 {userInfo ? (
                   <div className="btn-group">
                     <button
@@ -424,6 +429,9 @@ const Header = () => {
                   <>
                     <Link to="/register">Register</Link>
                     <Link to="/login">Login</Link>
+                    <Nav.Link href="https://www.admintheplant.cf/login">
+                          Admin
+                        </Nav.Link>
                   </>
                 )}
 
@@ -630,6 +638,9 @@ const Header = () => {
             <div className="d-flex justify-content-center">
             <br></br>
             <Link to="/ShopSection">
+            <Button variant="success" >Beli Tanaman</Button>{' '}
+            </Link >
+            <Link to="/TanamanLlangka">
             <Button variant="success" >Tanaman Langka</Button>{' '}
             </Link >
             <Link to="/Pohon">

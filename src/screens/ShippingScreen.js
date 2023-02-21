@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/Header";
 import { saveShippingAddress } from "../Redux/Actions/cartActions";
+import Form from 'react-bootstrap/Form';
 
 const ShippingScreen = ({ history }) => {
 
@@ -12,12 +13,13 @@ const ShippingScreen = ({ history }) => {
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
+  const [catatan, setCatatan] = useState(shippingAddress.catatan);
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    dispatch(saveShippingAddress({ address, city, postalCode, country,catatan }));
     history.push("/payment");
   };
   return (
@@ -56,7 +58,14 @@ const ShippingScreen = ({ history }) => {
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
-          />
+          />       
+          <Form.Group className="mt-4" controlId="exampleForm.ControlTextarea1">
+        <Form.Control as="textarea" rows={5}  type="text"
+            placeholder="Masukan catatan"
+            value={catatan}
+            required
+            onChange={(e) => setCatatan(e.target.value)}/>
+      </Form.Group>
           <button type="submit">Continue</button>
         </form>
       </div>

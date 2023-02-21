@@ -79,7 +79,7 @@ const OrderScreen = ({ match }) => {
                   </div>
                   <div className="col-md-8 center">
                     <h5>
-                      <strong>Customer</strong>
+                      <strong>Pembeli</strong>
                     </h5>
                     <p>{order.user.name}</p>
                     <p>
@@ -100,10 +100,10 @@ const OrderScreen = ({ match }) => {
                   </div>
                   <div className="col-md-8 center">
                     <h5>
-                      <strong>Order info</strong>
+                      <strong>Info Pemesanan</strong>
                     </h5>
-                    <p>Shipping: {order.shippingAddress.country}</p>
-                    <p>Pay method: {order.paymentMethod}</p>
+                    <p>Pengiriman: {order.shippingAddress.country}</p>
+                    <p>Metode Pembelian: WhatsApp (WA)</p>
                     {order.isPaid ? (
                       <div className="bg-info p-2 col-12">
                         <p className="text-white text-center text-sm-start">
@@ -133,14 +133,14 @@ const OrderScreen = ({ match }) => {
                       <strong>Deliver to</strong>
                     </h5>
                     <p>
-                      Address: {order.shippingAddress.city},{" "}
+                      Alamat: {order.shippingAddress.city},{" "}
                       {order.shippingAddress.address},{" "}
                       {order.shippingAddress.postalCode}
                     </p>
                     {order.isDelivered ? (
                       <div className="bg-info p-2 col-12">
                         <p className="text-white text-center text-sm-start">
-                          Delivered on {moment(order.deliveredAt).calendar()}
+                          alamat yang dituju {moment(order.deliveredAt).calendar()}
                         </p>
                       </div>
                     ) : (

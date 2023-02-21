@@ -37,7 +37,7 @@ const ShopSection = (props) => {
         <div className="section">      
           <div className="row">          
             <div className="col-lg-12 col-md-12 article">
-            <form onSubmit={submitHandler} className="input-group">
+            <form onSubmit={submitHandler} className="d-flex justify-content-center">
                   <input
                     type="search"
                     className="form-control rounded search"

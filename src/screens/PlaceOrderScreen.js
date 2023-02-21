@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { createOrder } from "../Redux/Actions/OrderActions";
 import { ORDER_CREATE_RESET } from "../Redux/Constants/OrderConstants";
 import Header from "./../components/Header";
 import Message from "./../components/LoadingError/Error";
+import {Nav} from "react-bootstrap";
+import Accordion from 'react-bootstrap/Accordion';
+
 
 const PlaceOrderScreen = ({ history }) => {
 
@@ -30,7 +32,7 @@ const PlaceOrderScreen = ({ history }) => {
   ).toFixed(2);
 
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { order, success, error } = orderCreate;
+  const { order, success } = orderCreate;
 
   useEffect(() => {
     if (success) {
@@ -39,79 +41,13 @@ const PlaceOrderScreen = ({ history }) => {
     }
   }, [history, dispatch, success, order]);
 
-  const placeOrderHandler = () => {
-    dispatch(
-      createOrder({
-        orderItems: cart.cartItems,
-        shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod,
-        itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
-        totalPrice: cart.totalPrice,
-      })
-    );
-  };
+  
 
   return (
     <>
       <Header />
       <div className="container">
-        <div className="row  order-detail">
-          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-            <div className="row ">
-              <div className="col-md-4 center">
-                <div className="alert-success order-box">
-                  <i className="fas fa-user"></i>
-                </div>
-              </div>
-              <div className="col-md-8 center">
-                <h5>
-                  <strong>Customer</strong>
-                </h5>
-                <p>{userInfo.name}</p>
-                <p>{userInfo.email}</p>
-              </div>
-            </div>
-          </div>
-          {/* 2 */}
-          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-            <div className="row">
-              <div className="col-md-4 center">
-                <div className="alert-success order-box">
-                  <i className="fas fa-truck-moving"></i>
-                </div>
-              </div>
-              <div className="col-md-8 center">
-                <h5>
-                  <strong>Order info</strong>
-                </h5>
-                <p>Shipping: {cart.shippingAddress.country}</p>
-                <p>Pay method: {cart.paymentMethod}</p>
-              </div>
-            </div>
-          </div>
-          {/* 3 */}
-          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-            <div className="row">
-              <div className="col-md-4 center">
-                <div className="alert-success order-box">
-                  <i className="fas fa-map-marker-alt"></i>
-                </div>
-              </div>
-              <div className="col-md-8 center">
-                <h5>
-                  <strong>Deliver to</strong>
-                </h5>
-                <p>
-                  Address: {cart.shippingAddress.city},{" "}
-                  {cart.shippingAddress.address},{" "}
-                  {cart.shippingAddress.postalCode}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <div className="row order-products justify-content-between">
           <div className="col-lg-8">
@@ -144,7 +80,73 @@ const PlaceOrderScreen = ({ history }) => {
           </div>
           {/* total */}
           <div className="col-lg-3 d-flex align-items-end flex-column mt-5 subtotal-order">
-            <table className="table table-bordered">
+          <Accordion className="d-flex justify-content-center">
+      <Accordion.Item alwaysOpen>
+        <Accordion.Header >Catatan</Accordion.Header>
+        <Accordion.Body>
+        {cart.shippingAddress.catatan}
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>         
+          </div>
+        </div>
+        <div className="row  order-detail">
+          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+            <div className="row ">
+              <div className="col-md-4 center">
+                <div className="alert-success order-box">
+                  <i className="fas fa-user"></i>
+                </div>
+              </div>
+              <div className="col-md-8 center">
+                <h5>
+                  <strong>Pembeli</strong>
+                </h5>
+                <p>{userInfo.name}</p>
+                <p>{userInfo.email}</p>
+              </div>
+            </div>
+          </div>
+          {/* 2 */}
+          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+            <div className="row">
+              <div className="col-md-4 center">
+                <div className="alert-success order-box">
+                  <i className="fas fa-truck-moving"></i>
+                </div>
+              </div>
+              <div className="col-md-8 center">
+                <h5>
+                  <strong>Info Pembeli</strong>
+                </h5>
+                <p>Provinsi: {cart.shippingAddress.country}</p>
+                <p>Metode Pembelian: WhatsApp (WA)</p>
+              </div>
+            </div>
+          </div>
+          {/* 3 */}
+          <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+            <div className="row">
+              <div className="col-md-4 center">
+                <div className="alert-success order-box">
+                  <i className="fas fa-map-marker-alt"></i>
+                </div>
+              </div>
+              <div className="col-md-8 center">
+                <h5>
+                  <strong>Dikirim ke</strong>
+                </h5>
+                <p>
+                  Alamat: {cart.shippingAddress.city},{" "}
+                  {cart.shippingAddress.address},{" "}
+                  {cart.shippingAddress.postalCode}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br></br>
+        <table className="table table-bordered">
               <tbody>
                 <tr>
                   <td>
@@ -172,18 +174,11 @@ const PlaceOrderScreen = ({ history }) => {
                 </tr>
               </tbody>
             </table>
-            {cart.cartItems.length === 0 ? null : (
-              <button type="submit" onClick={placeOrderHandler}>
+            <Nav.Item>
+        <Nav.Link href="https://wa.me/6289627706016"><button type="submit" >
                 Bayar
-              </button>
-            )}
-            {error && (
-              <div className="my-3 col-12">
-                <Message variant="alert-danger">{error}</Message>
-              </div>
-            )}
-          </div>
-        </div>
+              </button></Nav.Link>
+      </Nav.Item>
       </div>
     </>
   );

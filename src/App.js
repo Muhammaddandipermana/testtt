@@ -17,6 +17,7 @@ import NotFound from "./screens/NotFound";
 import PrivateRouter from "./PrivateRouter";
 import TanamanLangka from "./components/TanamanLangka";
 import SemakTinggi from "./components/klasifikasiTanaman/SemakTinggi";
+import TanamanLlangka from "./components/klasifikasiTanaman/TanamanLlangka";
 import Pohon from "./components/klasifikasiTanaman/Pohon";
 import SemakSedang from "./components/klasifikasiTanaman/SemakSedang";
 import SemakRendah from "./components/klasifikasiTanaman/SemakRendah";
@@ -42,6 +43,15 @@ import KacangKacangan from "./components/klasifikasiTanaman/KlasifikasiGroundCov
 import RumputKucai from "./components/klasifikasiTanaman/KlasifikasiGroundCover/RumputKucai"
 import RumputManila from "./components/klasifikasiTanaman/KlasifikasiRumput/RumputManila"
 import RumputPeking from "./components/klasifikasiTanaman/KlasifikasiRumput/RumputPeking"
+import BungaBangkaiRafflesia from "./components/klasifikasiTanaman/TanamanLangka/BungaBangkaiRafflesia"
+import BungaCendana from "./components/klasifikasiTanaman/TanamanLangka/BungaCendana"
+import DaunPayung from "./components/klasifikasiTanaman/TanamanLangka/DaunPayung"
+import EldeweissJawa from "./components/klasifikasiTanaman/TanamanLangka/EldeweissJawa"
+import KantongSemar from "./components/klasifikasiTanaman/TanamanLangka/KantongSemar"
+import PohonDamar from "./components/klasifikasiTanaman/TanamanLangka/PohonDamar"
+import Tengkawang from "./components/klasifikasiTanaman/TanamanLangka/Tengkawang"
+
+
 
 
 
@@ -67,6 +77,14 @@ const App = () => {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/TanamanLangka" component={TanamanLangka} />
+        <Route path="/TanamanLlangka" component={TanamanLlangka} />
+        <Route path="/BungaBangkaiRafflesia" component={BungaBangkaiRafflesia} />
+        <Route path="/BungaCendana" component={BungaCendana} />
+        <Route path="/DaunPayung" component={DaunPayung} />
+        <Route path="/EldeweissJawa" component={EldeweissJawa} />
+        <Route path="/KantongSemar" component={KantongSemar} />
+        <Route path="/PohonDamar" component={PohonDamar} />
+        <Route path="/Tengkawang" component={Tengkawang} />
         <Route path="/SemakTinggi" component={SemakTinggi} />
         <Route path="/Pohon" component={Pohon} />
         <Route path="/SemakRendah" component={SemakRendah} />
